@@ -1,19 +1,19 @@
 package training;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import static java.util.stream.Collectors.toList;
 
 public class IntUtils {
 
 	public static List<Integer> returnEvens(Integer... integers) {
-		List<Integer> evens = new ArrayList<>();
+		return Arrays.stream(integers)
+				.filter(IntUtils::isEven)
+				.collect(toList());
+	}
 
-		for (Integer integer : integers) {
-			if (integer % 2 == 0) {
-				evens.add(integer);
-			}
-		}
-
-		return evens;
+	private static boolean isEven(Integer integer) {
+		return integer % 2 == 0;
 	}
 }
